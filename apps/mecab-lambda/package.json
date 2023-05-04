@@ -1,0 +1,25 @@
+{
+  "name": "@mecab-edge/mecab-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && rm -rf package.zip && rm -rf node_modules && npm install && esbuild index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js && cp package.json ./dist && docker build -t mecab-lambda .",
+    "dev": "pnpm build && docker run -p 9000:8080 mecab-lambda",
+    "ecr:login": "export AWS_PROFILE=atsumari && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 126258523001.dkr.ecr.us-east-1.amazonaws.com",
+    "ecr:push": "docker push 126258523001.dkr.ecr.us-east-1.amazonaws.com/mecab-edge:latest",
+    "push": "pnpm build && pnpm ecr:login && pnpm ecr:push"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.8.5",
+    "@types/uuid": "^8.3.4",
+    "esbuild": "^0.16.13",
+    "typescript": "latest",
+    "@types/shell-quote": "^1.7.1"
+  },
+  "dependencies": {
+    "shell-quote": "latest"
+  }
+}
