@@ -26,7 +26,7 @@
     "@radix-ui/react-label": "latest",
     "@radix-ui/react-scroll-area": "latest",
     "@radix-ui/react-toast": "latest",
-    "@vercel/analytics": "^0.1.11",
+    "@vercel/analytics": "^1.0.1",
     "@next/font": "latest",
     "aws4fetch": "latest",
     "class-variance-authority": "^0.6.0",
