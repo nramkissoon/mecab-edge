@@ -61,7 +61,7 @@ const BottomSection = ({ mappings }: { mappings: Mapping[] }) => {
   }, []);
 
   return (
-    <div className="flex gap-5 pt-5" ref={outputSectionRef}>
+    <div className="flex w-full gap-5 pt-5" ref={outputSectionRef}>
       <div className="w-1/2">
         {mappings.map((mapping, i) => (
           <HighlightableWord key={i} mapping={mapping} i={i} />
